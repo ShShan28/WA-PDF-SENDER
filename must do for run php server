@@ -1,0 +1,53 @@
+this steps need to do for run xampp control pannel after you killed you can run php server(ckick start apache)
+
+here is the SUPER SIMPLE method — only 3 easy steps to check and kill ports 80 + 443.
+
+✅ STEP 1 — Open CMD as Administrator
+
+Click Start
+
+Type cmd
+
+Right-click → Run as Administrator
+
+✅ STEP 2 — Check BOTH ports (80 + 443)
+
+Copy & paste this:
+
+netstat -ano | findstr :80
+netstat -ano | findstr :443
+
+
+You will see something like this:
+
+TCP 0.0.0.0:80   LISTENING   1234
+TCP 0.0.0.0:443  LISTENING   5678
+
+
+👉 The last number is PID (Process ID).
+Example:
+
+Port 80 → PID 1234
+
+Port 443 → PID 5678
+
+✅ STEP 3 — Kill the process
+
+If you got PID 1234 →
+
+taskkill /PID 1234 /F
+
+
+If you got PID 5678 →
+
+taskkill /PID 5678 /F
+
+
+Done. ✔
+Now ports 80 and 443 are free for XAMPP.
+
+⭐ BONUS: Kill both in one line (if you know the PIDs)
+
+Example:
+
+taskkill /PID 1234 /PID 5678 /F
